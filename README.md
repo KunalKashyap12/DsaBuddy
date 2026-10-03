@@ -1,8 +1,5 @@
-# <img src="icons/icon32.png" width="28" height="28" valign="middle" alt="DsaBuddy" /> DsaBuddy — Socratic DSA Thinking Coach
+# DsaBuddy — Socratic DSA Thinking Coach
 
-<p align="center">
-  <img src="icons/icon128.png" width="96" height="96" alt="DsaBuddy Logo" />
-</p>
 
 <p align="center">
   <strong>A Socratic DSA & Competitive Programming Thinking Coach for LeetCode & Codeforces.</strong><br>
