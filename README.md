@@ -1,4 +1,4 @@
-# DsaBuddy — Socratic DSA Thinking Coach
+# <img src="icons/icon48.png" width="30" height="30" align="center" alt="DsaBuddy" /> DsaBuddy — Socratic DSA Thinking Coach
 
 
 <p align="center">
