@@ -1,58 +1,124 @@
-# 🦉 DSA Thinking Coach (Chrome Extension)
+# 🦉 DsaBuddy — Socratic DSA Thinking Coach
 
-> **A Socratic DSA & Competitive Programming Thinking Coach for LeetCode & Codeforces.**  
-> *Builds problem-solving intuition through guided questions — NEVER provides solution code.*
+<p align="center">
+  <img src="icons/icon128.png" width="96" height="96" alt="DsaBuddy Logo" />
+</p>
+
+<p align="center">
+  <strong>A Socratic DSA & Competitive Programming Thinking Coach for LeetCode & Codeforces.</strong><br>
+  <em>Builds problem-solving intuition through guided questions — NEVER gives solution code.</em>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Manifest-V3-blue?style=flat-square" alt="Manifest V3" />
+  <img src="https://img.shields.io/badge/TypeScript-5.5-blue?style=flat-square&logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react" alt="React 18" />
+  <img src="https://img.shields.io/badge/Groq-Free%20Tier%20Ready-f55036?style=flat-square" alt="Groq Free" />
+  <img src="https://img.shields.io/badge/OpenAI-BYOK-green?style=flat-square&logo=openai" alt="OpenAI BYOK" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="License" />
+</p>
 
 ---
 
 ## 🌟 Key Features
 
-1. **Strict No-Code Guardrail Guarantee**:
+1. **Strict Zero-Code Guardrail Guarantee**:
    - **3-Layer Security Pipeline**: System prompt hard rules $\rightarrow$ Real-time stream monitor score threshold $\rightarrow$ Secondary LLM judge pass.
-   - **Zero Code Leaks**: Never outputs solution code, pseudocode, or complete step-by-step recipes.
+   - **Zero Code Leaks**: Never outputs solution code, syntax snippets, pseudocode, or complete step-by-step algorithms.
+   - **Anti-Hallucination & Scope Boundaries**: Strictly references only the provided problem context; politely declines out-of-scope chit-chat and avoids negativity.
+
 2. **5-Level Progressive Hint Ladder**:
-   - **Level 1**: Clarify the problem, constraints, and edge cases.
-   - **Level 2**: Point to key observations and analyze brute force costs ($O(N^2)$).
-   - **Level 3**: Name category of technique (e.g. "tracking items seen so far") without spoiling algorithm.
-   - **Level 4**: Name data structure/pattern (e.g. Monotonic Stack, DP) and why it fits.
-   - **Level 5**: High-level key insight (2-3 sentences in words). *No code is ever unlocked.*
-3. **Privacy-First BYOK Architecture**:
-   - Bring Your Own Key: Groq (Llama / DeepSeek / Qwen) & OpenAI (`gpt-4o-mini`, `gpt-4o`).
-   - All API calls routed strictly inside the background Service Worker (never exposed to host page JS context).
-   - Optional `chrome.storage.session` storage (API key automatically deleted on browser close).
-   - Topic tags and user code drafts hidden from LLM by default to prevent spoilers.
-4. **Platform Integration & Contest Safety**:
-   - Seamless Shadow DOM encapsulation on LeetCode and Codeforces (zero CSS collision).
-   - Handles SPA navigation between problems automatically.
-   - **Contest Mode**: Automatically disables coaching on live contest pages (`/contest/`, `/gym/`) to maintain academic integrity.
-   - **Keyboard Shortcut**: Press `Alt+S` to toggle panel visibility.
+   - **Level 1**: Clarify the problem, input/output specifications, constraints, and edge cases.
+   - **Level 2**: Point to key problem observations and analyze brute force costs ($O(N^2)$).
+   - **Level 3**: Name the category of technique (e.g., "tracking elements seen so far") without spoiling the solution.
+   - **Level 4**: Suggest the algorithmic pattern or data structure (e.g., Monotonic Stack, Two Pointers, DP) and why it fits.
+   - **Level 5**: High-level key intuition (2-3 sentences). *No code is ever unlocked.*
+
+3. **100% Free & Privacy-First BYOK Architecture**:
+   - **Free with Groq**: Use state-of-the-art fast models (`qwen/qwen3.8-27b`, `deepseek-r1-distill-llama-70b`) completely free with no credit card required.
+   - **OpenAI Compatible**: Also supports your own OpenAI API key (`gpt-4o-mini`, `gpt-4o`).
+   - **Direct & Secure**: All API calls are executed strictly within the background Service Worker (never exposed to host page JavaScript).
+   - **Session Storage**: Optional ephemeral key mode that automatically clears credentials when the browser closes.
+
+4. **Seamless Platform Integration**:
+   - **LeetCode & Codeforces**: Works out of the box on problem pages and automatically watches Single Page App (SPA) navigations.
+   - **Shadow DOM Encapsulation**: Isolated styles with zero CSS bleeding or interference with problem sites.
+   - **Clean Mathematical Notation**: Formats mathematical equations and constraints into clean, readable Unicode math ($2n \times 2n$, $O(N \log N)$, $\le$, $10^5$) instead of raw LaTeX or HTML entities.
+   - **Contest Mode**: Automatically disables the assistant on live contest pages (`/contest/`, `/gym/`) to maintain academic integrity.
+   - **Keyboard Shortcut**: Press `Alt + S` anytime to toggle the coach panel.
+
+---
+
+## 🚀 Quickstart: Install Locally for Free
+
+You do not need to pay anything to use DsaBuddy. You can run it locally in Chrome:
+
+### 1. Clone & Install Dependencies
+```bash
+git clone https://github.com/KunalKashyap12/DsaBuddy.git
+cd DsaBuddy
+npm install
+```
+
+### 2. Build the Extension
+```bash
+npm run build
+```
+
+### 3. Load into Google Chrome
+1. Open Google Chrome and navigate to:
+   ```text
+   chrome://extensions
+   ```
+2. Enable **Developer mode** in the top-right corner.
+3. Click the **Load unpacked** button in the top-left corner.
+4. Select the `DsaBuddy` project folder.
+
+### 4. Configure Free AI Key (Groq)
+1. Get a 100% free API key at [console.groq.com](https://console.groq.com) (no credit card required).
+2. Click the **DsaBuddy** icon in your Chrome toolbar and select **Settings**.
+3. Select **Groq**, paste your API key (`gsk_...`), click **Test Key**, and click **Save Settings**.
+4. Open any problem on [LeetCode](https://leetcode.com) or [Codeforces](https://codeforces.com) — Buddy is ready to help you think!
+
+---
+
+## 🛠️ Developer Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Starts esbuild in `--watch` mode for live development |
+| `npm run build` | Runs TypeScript type check and creates production-optimized bundles |
+| `npm run typecheck` | Validates all TypeScript types with `tsc --noEmit` |
+| `npm run package` | Builds, minifies, and creates a store-ready `dsa-buddy-extension.zip` in `dist/` |
+| `npm test` | Runs the automated 10-case adversarial guardrail test suite |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-chrome-extension/
+DsaBuddy/
 ├── manifest.json              # Chrome Manifest V3 declaration
 ├── package.json               # Dependencies and build scripts
 ├── tsconfig.json              # TypeScript compilation configuration
 ├── README.md                  # Project overview & documentation
 ├── PRIVACY_POLICY.md          # Extension privacy policy
 ├── scripts/
-│   └── build.js               # Multi-target esbuild pipeline (with --watch)
+│   ├── build.js               # Multi-target esbuild pipeline (with --watch & minification)
+│   └── package.js             # Chrome Web Store packaging & zip generator
 ├── icons/                     # Extension branding icons (16, 32, 48, 128)
 ├── background/
-│   └── background.js          # Service worker bundle (target for manifest.json)
+│   └── background.js          # Production background service worker bundle
 ├── content/
-│   └── content.js             # Content script bundle (target for manifest.json)
+│   └── content.js             # Production content script bundle (Shadow DOM)
 ├── popup/
 │   ├── index.html             # Options & popup HTML shell
-│   └── popup.js               # React options/popup bundle
+│   └── popup.js               # Options & settings React application bundle
 ├── tests/
 │   └── guardrails/
 │       └── adversarial.test.js # Guardrail adversarial leak tests
 └── src/                       # Source code
-    ├── background/            # Background service worker & logic
+    ├── background/            # Background service worker logic
     │   ├── guardrails/        # 3-layer guardrail inspection pipeline
     │   ├── prompts/           # Socratic system prompt & judge prompts
     │   ├── index.ts           # Background runtime & port messaging
@@ -77,57 +143,6 @@ chrome-extension/
 
 ---
 
-## 🚀 Installation & Developer Setup
-
-1. **Clone & Install Dependencies**:
-   ```bash
-   npm install
-   ```
-
-2. **Development (Watch Mode)**:
-   ```bash
-   npm run dev
-   ```
-
-3. **Build the Extension**:
-   ```bash
-   npm run build
-   ```
-
-4. **Type Check**:
-   ```bash
-   npm run typecheck
-   ```
-
-5. **Package for Chrome Web Store Deployment**:
-   ```bash
-   npm run package
-   ```
-   *This minifies all bundles, tree-shakes dead code, stages files into `dist/`, and outputs a ready-to-upload `dsa-buddy-extension.zip` (only ~120 KB).*
-
-6. **Run Guardrail Test Suite**:
-   ```bash
-   npm test
-   ```
-
-7. **Load into Google Chrome (Testing)**:
-   - Open Chrome and navigate to `chrome://extensions`.
-   - Enable **Developer mode** in the top-right corner.
-   - Click **Load unpacked**.
-   - Select either the root `chrome-extension` directory or the staged `dist/` directory.
-
-8. **Deploy to Chrome Web Store**:
-   - Go to the [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole).
-   - Click **New Item**.
-   - Upload the generated `dsa-buddy-extension.zip`.
-   - Provide the Privacy Policy link (using `PRIVACY_POLICY.md`) and submit for review.
-
-9. **Configure API Key in Extension**:
-   - Open the extension options page by clicking the extension icon or right-clicking and selecting **Options**.
-   - Select your provider (Groq or OpenAI), enter your API key, click **Test Key**, and save.
-
----
-
 ## 🧪 Guardrail Validation Suite
 
 The deterministic score-threshold code detector is validated via the automated test suite in `tests/guardrails/adversarial.test.js`:
@@ -140,7 +155,14 @@ Tests verify 0 code leaks against adversarial prompts (e.g. *"Write the solution
 
 ---
 
-## 📄 License & Privacy
+## 🔒 Privacy & Permissions
 
-- Zero telemetry, zero analytics tracking, zero third-party endpoints.
-- Network calls are restricted strictly to `https://api.openai.com/*`.
+- **Zero Telemetry**: No analytics tracking, telemetry, or external logging.
+- **Direct BYOK Communication**: Network calls are strictly sent to your chosen AI provider endpoint (`https://api.groq.com/*` or `https://api.openai.com/*`).
+- **Encapsulated Scope**: Only runs on LeetCode and Codeforces problem domains.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
