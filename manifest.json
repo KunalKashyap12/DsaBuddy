@@ -1,0 +1,79 @@
+{
+  "manifest_version": 3,
+  "name": "DsaBuddy",
+  "version": "1.0.0",
+  "description": "Socratic DSA & Competitive Programming Thinking Coach for LeetCode and Codeforces. Never gives solution code.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://api.openai.com/*",
+    "https://api.groq.com/*",
+    "*://*.leetcode.com/*",
+    "*://leetcode.com/*",
+    "*://*.codeforces.com/*",
+    "*://codeforces.com/*",
+    "*://*.codeforces.net/*",
+    "*://codeforces.net/*"
+  ],
+  "background": {
+    "service_worker": "background/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.leetcode.com/problems/*",
+        "*://leetcode.com/problems/*",
+        "*://*.leetcode.com/contest/*",
+        "*://leetcode.com/contest/*",
+        "*://*.codeforces.com/problemset/problem/*",
+        "*://codeforces.com/problemset/problem/*",
+        "*://*.codeforces.com/contest/*",
+        "*://codeforces.com/contest/*",
+        "*://*.codeforces.com/gym/*",
+        "*://codeforces.com/gym/*",
+        "*://*.codeforces.com/group/*",
+        "*://codeforces.com/group/*",
+        "*://*.codeforces.com/edu/*",
+        "*://codeforces.com/edu/*",
+        "*://*.codeforces.com/problemsets/*",
+        "*://codeforces.com/problemsets/*",
+        "*://*.codeforces.net/*",
+        "*://codeforces.net/*"
+      ],
+      "js": [
+        "content/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_page": "popup/index.html",
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "DsaBuddy",
+    "default_popup": "popup/index.html"
+  },
+  "commands": {
+    "toggle-panel": {
+      "suggested_key": {
+        "default": "Alt+S",
+        "mac": "Alt+S"
+      },
+      "description": "Toggle DsaBuddy panel"
+    }
+  }
+}

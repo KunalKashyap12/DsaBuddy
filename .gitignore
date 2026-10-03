@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Production build artifacts
+dist/
+dsa-buddy-extension.zip
+
+# Secrets & local config
+.env
+.env.*
+*.pem
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
